@@ -31,54 +31,54 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
     private Employee emp;
     private AttendanceMarkerListener l;
     private String mode;
-    
+
     public RuntimeAttendanceMarker(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        jrSick.setVisible(false);
-        rbCasual.setVisible(false);
-        rbPriv.setVisible(false);
-        jLabel3.setVisible(false);
-        
+//        jrSick.setVisible(false);
+//        rbCasual.setVisible(false);
+//        rbPriv.setVisible(false);
+        //jLabel3.setVisible(false);
+
     }
-    
+
     public void addAttendanceMarkerListener(AttendanceMarkerListener l) {
         this.l = l;
     }
-    
-    public void setMode(String mode) {
-        this.mode = mode;
-        if (mode.equals("LEAVING")) {
-            rbout.setText("Out");
-            jLabel2.setVisible(true);
-            jLabel1.setVisible(true);
-            jPanel1.setBorder(new LineBorder(Color.BLACK));
-            jPanel3.setBorder(new LineBorder(Color.BLACK));
-            jPanel2.setBorder(new LineBorder(Color.BLACK));
-            jsAMPM.setVisible(true);
-            jTextField1.setVisible(true);
-            jTextField2.setVisible(true);
-            jButton1.setVisible(true);
-            jButton2.setVisible(true);
-            jButton3.setVisible(true);
-            jButton4.setVisible(true);
-        } else {
-            rbout.setText("In");
-            jLabel2.setVisible(false);
-            jPanel1.setBorder(null);
-            jPanel3.setBorder(null);
-            jPanel2.setBorder(null);
-            jsAMPM.setVisible(false);
-            jLabel1.setVisible(false);
-            jTextField1.setVisible(false);
-            jTextField2.setVisible(false);
-            jButton1.setVisible(false);
-            jButton2.setVisible(false);
-            jButton3.setVisible(false);
-            jButton4.setVisible(false);
-        }
-    }
-    
+
+//    public void setMode(String mode) {
+//        this.mode = mode;
+//        if (mode.equals("LEAVING")) {
+//            rbout.setText("Out");
+//            jLabel2.setVisible(true);
+//            jLabel1.setVisible(true);
+//            jPanel1.setBorder(new LineBorder(Color.BLACK));
+//            jPanel3.setBorder(new LineBorder(Color.BLACK));
+//            jPanel2.setBorder(new LineBorder(Color.BLACK));
+//            jsAMPM.setVisible(true);
+//            jTextField1.setVisible(true);
+//            jTextField2.setVisible(true);
+//            jButton1.setVisible(true);
+//            jButton2.setVisible(true);
+//            jButton3.setVisible(true);
+//            jButton4.setVisible(true);
+//        } else {
+//            rbout.setText("In");
+//            jLabel2.setVisible(false);
+//            jPanel1.setBorder(null);
+//            jPanel3.setBorder(null);
+//            jPanel2.setBorder(null);
+//            jsAMPM.setVisible(false);
+//            jLabel1.setVisible(false);
+//            jTextField1.setVisible(false);
+//            jTextField2.setVisible(false);
+//            jButton1.setVisible(false);
+//            jButton2.setVisible(false);
+//            jButton3.setVisible(false);
+//            jButton4.setVisible(false);
+//        }
+//    }
+
     public void setEmp(Employee emp) {
         this.emp = emp;
 
@@ -87,8 +87,8 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
         DBHandler db = new DBHandler();
         int limitReached = db.slDailyLimitReachedQuestionMark(this.emp.getEmpCode());
         if (limitReached == 1) {
-            rbShortLeave.setEnabled(false);
-            rbhalf.setEnabled(false);
+            //rbShortLeave.setEnabled(false);
+            //rbhalf.setEnabled(false);
             rbOd.setEnabled(false);
             //rbout.setVisible(true);
         } else {
@@ -111,36 +111,19 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
         jPanel7 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jbMarkOk = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        rbCasual = new javax.swing.JRadioButton();
-        rbPriv = new javax.swing.JRadioButton();
-        jrSick = new javax.swing.JRadioButton();
         rbOd = new javax.swing.JRadioButton();
-        rbShortLeave = new javax.swing.JRadioButton();
-        rbhalf = new javax.swing.JRadioButton();
-        rbout = new javax.swing.JRadioButton();
+        rbPersonalReasons = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
-        inner = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jsAMPM = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(845, 495));
-        setSize(new java.awt.Dimension(845, 495));
+        setPreferredSize(new java.awt.Dimension(678, 495));
+        setSize(new java.awt.Dimension(678, 495));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jPanel7.setLayout(new java.awt.GridLayout(2, 1));
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 0, 0));
         jButton5.setText("Cancel");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -160,55 +143,19 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
         });
         jPanel7.add(jbMarkOk);
 
-        jPanel4.setLayout(new java.awt.GridLayout(1, 4));
-
-        buttonGroup1.add(rbCasual);
-        rbCasual.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        rbCasual.setSelected(true);
-        rbCasual.setText("Casual");
-        jPanel4.add(rbCasual);
-
-        buttonGroup1.add(rbPriv);
-        rbPriv.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        rbPriv.setText("Privliged");
-        jPanel4.add(rbPriv);
-
-        buttonGroup1.add(jrSick);
-        jrSick.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jrSick.setText("Sick");
-        jPanel4.add(jrSick);
-
         buttonGroup2.add(rbOd);
         rbOd.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         rbOd.setSelected(true);
-        rbOd.setText("Official Duty");
+        rbOd.setText("Official Work");
         rbOd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbOdActionPerformed(evt);
             }
         });
 
-        buttonGroup2.add(rbShortLeave);
-        rbShortLeave.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        rbShortLeave.setText("Short Leave");
-        rbShortLeave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbShortLeaveActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(rbhalf);
-        rbhalf.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        rbhalf.setText("Half Leave");
-        rbhalf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbhalfActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(rbout);
-        rbout.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        rbout.setText("OUT");
+        buttonGroup2.add(rbPersonalReasons);
+        rbPersonalReasons.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        rbPersonalReasons.setText("Personal Reasons");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -217,15 +164,10 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rbOd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbShortLeave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbhalf)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbout)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbPersonalReasons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,196 +176,47 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbout)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(rbOd)
-                                .addComponent(rbShortLeave)
-                                .addComponent(rbhalf)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbOd)
+                            .addComponent(rbPersonalReasons, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("To proceed with short leave application, click 'OK' or 'Cancel' to exit.");
-
-        inner.setLayout(new java.awt.GridLayout(1, 3));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 60)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("0");
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(102, 255, 51));
-        jButton1.setText("+");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 0, 51));
-        jButton2.setText("-");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Till    Hours");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 86, Short.MAX_VALUE)))))
-                .addGap(0, 0, 0))
-        );
-
-        inner.add(jPanel2);
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 60)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("0");
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(51, 255, 51));
-        jButton3.setText("+");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 0, 0));
-        jButton4.setText("-");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Minutes");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                    .addComponent(jTextField2))
-                .addGap(0, 0, 0))
-        );
-
-        inner.add(jPanel3);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jsAMPM.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jsAMPM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PM", "AM" }));
-        jsAMPM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jsAMPMActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jsAMPM, 0, 274, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 36, Short.MAX_VALUE)
-                    .addComponent(jsAMPM, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        inner.add(jPanel1);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("To proceed , click 'OK' or 'Cancel' to exit.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(inner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(inner, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(265, 265, 265))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbMarkOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMarkOkActionPerformed
+        if (rbOd.isSelected()){
+            l.ok("messge od");
+            this.dispose();
+        }else if (rbPersonalReasons.isSelected()){
+            l.ok("message personal reason");
+            this.dispose();
+        }
 
+    }//GEN-LAST:event_jbMarkOkActionPerformed
+    
+    /*private void okActionPerformed() {
         //if user has no option but to go out without anything
         if (rbout.isSelected()) {
             l.ok("no leave for today, marking attendance");
@@ -433,7 +226,7 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
         int hours = Integer.parseInt(jTextField1.getText());
         int min = Integer.parseInt(jTextField2.getText());
         String ampm = jsAMPM.getSelectedItem().toString();
-        
+
         String type = "";
         if (rbOd.isSelected()) {
             type = "Official Duty";
@@ -442,24 +235,24 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
         } else {
             type = "Half Leave";
         }
-        
+
         Calendar odc = new GregorianCalendar();
         odc.setTimeInMillis(System.currentTimeMillis());
         odc.set(Calendar.HOUR, hours);
         odc.set(Calendar.MINUTE, min);
         odc.set(Calendar.AM_PM, ampm.equals("PM") ? Calendar.PM : Calendar.AM);
         java.util.Date odDate = odc.getTime();
-        
+
         Calendar shc = new GregorianCalendar();
         shc.setTimeInMillis(System.currentTimeMillis());
         shc.add(Calendar.HOUR, 2);
         java.util.Date shortDate = shc.getTime();
-        
+
         Calendar hc = new GregorianCalendar();
         hc.setTimeInMillis(System.currentTimeMillis());
         hc.add(Calendar.HOUR, 4);
         java.util.Date halfLeaveDate = hc.getTime();
-        
+
         DBHandler d = new DBHandler();
         String result = "";
         if (type.equals("Official Duty")) {
@@ -469,14 +262,14 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
             } else if (mode.equals("COMING")) {
                 message = "You have marked your Offical Duty till " + new Date().toString() + " today. Would you like to proceed?";
             }
-            
+
             int option = JOptionPane.showConfirmDialog(null, message);
             switch (option) {
                 case JOptionPane.CANCEL_OPTION:
                     this.l.cancel();
                     this.dispose();
                     return;
-                
+
                 case JOptionPane.OK_OPTION:
                     if (mode.equals("LEAVING")) {
                         result = d.apply(this.emp.getEmpCode(), new Timestamp(new java.util.Date().getTime()), new Timestamp(odDate.getTime()), "OD", emp.getDeptID());
@@ -485,23 +278,23 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
                         c.set(Calendar.HOUR, 8);
                         c.set(Calendar.MINUTE, 30);
                         c.set(Calendar.AM_PM, Calendar.AM);
-                        
+
                         Timestamp t = new Timestamp(c.getTimeInMillis());
                         Timestamp t2 = new Timestamp(System.currentTimeMillis());
                         result = d.apply(this.emp.getEmpCode(), t, t2, "OD", emp.getDeptID());
                     }
-                    
+
                     break;
                 case JOptionPane.NO_OPTION:
                     this.l.cancel();
                     this.dispose();
                     return;
             }
-            
+
             System.out.println("Official Duty Info: (Employee=" + this.emp.getEmpCode() + ",Leave Till=" + odDate.toString() + ")");
         } else if (type.equals("Short Leave")) {
             Calendar c = Calendar.getInstance();
-            
+
             String message = "You have marked your short leave of two hours today. would you like to proceed?";
             int option = JOptionPane.showConfirmDialog(null, message);
             switch (option) {
@@ -517,19 +310,19 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
                         c2.set(Calendar.HOUR, 8);
                         c2.set(Calendar.MINUTE, 30);
                         c2.set(Calendar.AM_PM, Calendar.AM);
-                        
+
                         Timestamp t = new Timestamp(c2.getTimeInMillis());
                         Timestamp t2 = new Timestamp(System.currentTimeMillis());
                         result = d.apply(this.emp.getEmpCode(), t, t2, "SHL", emp.getDeptID());
                     }
-                    
+
                     break;
                 case JOptionPane.NO_OPTION:
                     this.l.cancel();
                     this.dispose();
                     return;
             }
-            
+
             System.out.println("Short Leave Info: (Employee=" + this.emp.getEmpCode() + ",Leave Till=" + shortDate.toString() + ")");
         } else if (type.equals("Half Leave")) {
             String halfLeaveType = "";
@@ -544,12 +337,12 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
                 leaveType = "Half Casual Leave";
                 halfLeaveType = "CLH";
             }
-            
+
             Calendar c = Calendar.getInstance();
             Calendar c2 = Calendar.getInstance();
             c2.set(Calendar.HOUR, 1);
             c2.set(Calendar.AM_PM, Calendar.PM);
-            
+
             String firstHalforSecHalf = "";
             System.out.println(">>>>>>>>>>>> " + c.get(Calendar.HOUR_OF_DAY));
             if (c.before(c2)) {
@@ -573,7 +366,7 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
                         c3.set(Calendar.HOUR, 8);
                         c3.set(Calendar.MINUTE, 30);
                         c3.set(Calendar.AM_PM, Calendar.AM);
-                        
+
                         Timestamp t = new Timestamp(c3.getTimeInMillis());
                         Timestamp t2 = new Timestamp(System.currentTimeMillis());
                         result = d.apply(this.emp.getEmpCode(), t, t2, halfLeaveType, emp.getDeptID());
@@ -584,7 +377,7 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
                     this.dispose();
                     return;
             }
-            
+
         }
         if (result.equals("MAX_LIMIT_SL")) {
             JOptionPane.showMessageDialog(null, "max limit reached");
@@ -610,9 +403,9 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
                 Calendar c2 = Calendar.getInstance();
                 c2.set(Calendar.HOUR, 1);
                 c2.set(Calendar.AM_PM, Calendar.PM);
-                
+
                 String firstHalforSecHalf = "";
-                
+
                 if (c.before(c2)) {
                     firstHalforSecHalf = "First Half";
                 } else {
@@ -627,88 +420,51 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
             if (option == JOptionPane.CANCEL_OPTION) {
                 l.cancel();
             }
-            
+
         } else {
             //l.ok(this.emp.getName()+" has proceeded on Official Duty till" + hours + ":" + min + " " + ampm + " today.");
 
         }
         this.dispose();
-        
-
-    }//GEN-LAST:event_jbMarkOkActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        jTextField1.setText(Integer.parseInt(jTextField1.getText()) + 1 + "");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        jTextField1.setText(Integer.parseInt(jTextField1.getText()) - 1 + "");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        jTextField2.setText(Integer.parseInt(jTextField2.getText()) + 1 + "");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        jTextField2.setText(Integer.parseInt(jTextField2.getText()) - 1 + "");
-    }//GEN-LAST:event_jButton4ActionPerformed
-
+    }*/
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jsAMPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsAMPMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jsAMPMActionPerformed
-    private void swapUI() {
-        if (rbOd.isSelected()) {
-            jPanel2.setVisible(true);
-            jPanel3.setVisible(true);
-            jPanel1.setVisible(true);
-            jsAMPM.setVisible(true);
-            jrSick.setVisible(false);
-            rbCasual.setVisible(false);
-            rbPriv.setVisible(false);
-            jLabel3.setVisible(false);
-        } else if (rbShortLeave.isSelected()) {
-            jsAMPM.setVisible(false);
-            jPanel2.setVisible(false);
-            jPanel3.setVisible(false);
-            jPanel1.setVisible(false);
-            jrSick.setVisible(false);
-            rbCasual.setVisible(false);
-            rbPriv.setVisible(false);
-            jLabel3.setVisible(true);
-        } else {
-            jsAMPM.setVisible(false);
-            jPanel2.setVisible(false);
-            jPanel3.setVisible(false);
-            jPanel1.setVisible(false);
-            jrSick.setVisible(true);
-            rbCasual.setVisible(true);
-            jLabel3.setVisible(false);
-            rbPriv.setVisible(true);
-        }
-    }
+//    private void swapUI() {
+//        if (rbOd.isSelected()) {
+//            jPanel2.setVisible(true);
+//            jPanel3.setVisible(true);
+//            jPanel1.setVisible(true);
+//            jsAMPM.setVisible(true);
+//            jrSick.setVisible(false);
+//            rbCasual.setVisible(false);
+//            rbPriv.setVisible(false);
+//            jLabel3.setVisible(false);
+//        } else if (rbShortLeave.isSelected()) {
+//            jsAMPM.setVisible(false);
+//            jPanel2.setVisible(false);
+//            jPanel3.setVisible(false);
+//            jPanel1.setVisible(false);
+//            jrSick.setVisible(false);
+//            rbCasual.setVisible(false);
+//            rbPriv.setVisible(false);
+//            jLabel3.setVisible(true);
+//        } else {
+//            jsAMPM.setVisible(false);
+//            jPanel2.setVisible(false);
+//            jPanel3.setVisible(false);
+//            jPanel1.setVisible(false);
+//            jrSick.setVisible(true);
+//            rbCasual.setVisible(true);
+//            jLabel3.setVisible(false);
+//            rbPriv.setVisible(true);
+//        }
+//    }
     private void rbOdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOdActionPerformed
-        
-        swapUI();
+
+        //swapUI();
     }//GEN-LAST:event_rbOdActionPerformed
-
-    private void rbShortLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbShortLeaveActionPerformed
-        // TODO add your handling code here:
-        swapUI();
-    }//GEN-LAST:event_rbShortLeaveActionPerformed
-
-    private void rbhalfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbhalfActionPerformed
-        // TODO add your handling code here:
-        swapUI();
-    }//GEN-LAST:event_rbhalfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -755,31 +511,12 @@ public class RuntimeAttendanceMarker extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JPanel inner;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jbMarkOk;
-    private javax.swing.JRadioButton jrSick;
-    private javax.swing.JComboBox<String> jsAMPM;
-    private javax.swing.JRadioButton rbCasual;
     private javax.swing.JRadioButton rbOd;
-    private javax.swing.JRadioButton rbPriv;
-    private javax.swing.JRadioButton rbShortLeave;
-    private javax.swing.JRadioButton rbhalf;
-    private javax.swing.JRadioButton rbout;
+    private javax.swing.JRadioButton rbPersonalReasons;
     // End of variables declaration//GEN-END:variables
 }
