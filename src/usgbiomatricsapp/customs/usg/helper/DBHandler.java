@@ -286,6 +286,39 @@ public class DBHandler {
 
     }
 
+    public void sendMail(String message, Employee emp) {
+        String query = "{ call uspr.auto_intimation(?,?,?,?,?)}";
+
+        Connection conn = null;
+        CallableStatement cst = null;
+
+        try {
+            Connection con = DBConnection.getInstance().getConnection();
+            cst = con.prepareCall(query);
+            cst.setString(1, emp.getEmpCode());
+            cst.setString(2, "usmanriaz@usaparel.com");
+            cst.setString(3, null);
+            cst.setString(4, emp.getName());
+            cst.setString(5, message);
+
+            cst.execute();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        } finally {
+            try {
+
+                if (cst != null) {
+                    cst.close();
+                }
+                DBConnection.closeConnection();
+            } catch (Exception ex3) {
+                System.out.println("Unable to close Connection/ResultSet/PreparedStatement:" + ex3.getMessage());
+            }
+        }
+    }
+
     public String apply(String empcode, java.sql.Timestamp fromDate, java.sql.Timestamp toDate, String leaveType, String deptID) {
 
         String query = "{ call ustms.CUST_APPLY_LEAVE_BIOMATRIC(?,?,?,?,?,?)}";

@@ -380,6 +380,8 @@ public class FPDialogVerification extends javax.swing.JDialog implements ActionL
             if (evt.captureResult != null) {
                 if (evt.captureResult.quality == Reader.CaptureQuality.GOOD && evt.captureResult.image != null) {
                     if (Global.online) {
+                        //if we are online then stop the information shown time
+                        //hide the info
                         if (t != null) {
                             t.stop();
                         }
@@ -521,10 +523,12 @@ public class FPDialogVerification extends javax.swing.JDialog implements ActionL
                         //code that handles the new requirement of letting the user apply leave when he leaves early
                         //uncomment this code to add this functionalty
                         DBHandler db = new DBHandler();
-                        String early = db.isLeavingEarly(emps[candidates[0].fmd_index].getEmpCode());
-                        System.out.println(emps[candidates[0].fmd_index].getDeptID() + "");
-                        //early = "NO";
-                        if (early.equals("YES")) {
+                   
+                        
+                        String late = db.isComingLate(emps[candidates[0].fmd_index].getEmpCode());
+                        late = "YES";
+                        
+                        if (late.equals("YES")) {
                             SwingUtilities.invokeLater(new Runnable() {
                                 @Override
                                 public void run() {
@@ -532,19 +536,10 @@ public class FPDialogVerification extends javax.swing.JDialog implements ActionL
                                     showInteractiveForm(emps[candidates[0].fmd_index],"LEAVING");
                                 }
                             });
-                        } else {
-                            System.out.println("coming");
-                            
-                            String late = db.isComingLate(emps[candidates[0].fmd_index].getEmpCode());
-                            //late = "YES";
-                            if (late.equals("YES")) {
-                                showInteractiveForm(emps[candidates[0].fmd_index],"COMING");
-                            } else {
-                                //JOptionPane.showMessageDialog(null, "normal attendance");
-                            }
-
-                            //new InsertAttendanceLog(emps[candidates[0].fmd_index].getEmpCode()).start();
-                        } //PUT END COMENT HERE
+                        } else{
+                            JOptionPane.showMessageDialog(null, "normal");
+                        }
+             
                     }
                 });
 
@@ -569,14 +564,15 @@ public class FPDialogVerification extends javax.swing.JDialog implements ActionL
     private void showInteractiveForm(Employee employee,String mode) {
         RuntimeAttendanceMarker pe = new RuntimeAttendanceMarker(FPDialogVerification.this.parent, true);
         pe.setEmp(employee);
-        pe.setMode(mode);
+        //pe.setMode(mode);
         pe.addAttendanceMarkerListener(new AttendanceMarkerListener() {
             @Override
             public void ok(String m) {
-                //JOptionPane.showMessageDialog(null, employee.getEmpCode()+"");
-                new InsertAttendanceLog(employee.getEmpCode()).start();
-                infoDisplayed = true;
-                resetFormAfter2();
+                 DBHandler db = new DBHandler();
+                 db.sendMail(m,employee);
+//                new InsertAttendanceLog(employee.getEmpCode()).start();
+//                infoDisplayed = true;
+//                resetFormAfter2();
             }
 
             @Override
